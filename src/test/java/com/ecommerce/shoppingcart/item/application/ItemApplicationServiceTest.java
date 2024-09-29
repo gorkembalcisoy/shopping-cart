@@ -28,6 +28,9 @@ public class ItemApplicationServiceTest {
         itemApplicationService.addItem(addItemRequest);
         verify(itemFactoryClientMock, times(1))
                 .createItem(addItemRequest.getItemId(), addItemRequest.getCategoryId(), addItemRequest.getSellerId(), addItemRequest.getPrice(), addItemRequest.getQuantity());
+        // TODO verify item.isvalid call -> capture
+        // TODO verify item.setid call -> capture
+        // TODO event published control
     }
 
     private static AddItemRequest addItemRequest() {

@@ -4,22 +4,16 @@ import com.ecommerce.shoppingcart.item.domain.model.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
 public class ItemFactoryClient {
 
-    private static final List<ItemFactory> itemFactories = new ArrayList<>();
-
-    static {
-//        itemFactories.add(new DigitalItemFactory());
-    }
+    private final DigitalItemFactory digitalItemFactory;
 
     public Item createItem(int itemId, int categoryId, int sellerId, double price, int quantity) {
-        return itemFactories
-                .stream()
+        return Stream.of(digitalItemFactory)
                 .filter(itemFactory -> itemFactory.accept(categoryId))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("any item factory cannot be found"))

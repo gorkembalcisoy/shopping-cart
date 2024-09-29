@@ -15,8 +15,8 @@ public class ItemApplicationService {
     public void addItem(AddItemRequest addItemRequest) {
         Item item = itemFactoryClient
                 .createItem(addItemRequest.getItemId(), addItemRequest.getCategoryId(), addItemRequest.getSellerId(), addItemRequest.getPrice(), addItemRequest.getQuantity());
-//        item.isValid();
-//        item.setId();
-//        eventpublish to gateway
+//       TODO item.isValid();
+//       TODO  item.setId();
+//        TODO eventpublish to gateway
     }
 }
